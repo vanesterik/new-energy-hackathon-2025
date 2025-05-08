@@ -14,7 +14,9 @@ PACKAGE := src/$(PROJECT)
 
 ## Bootstrap system dependencies
 bootstrap:
-	which pdm || brew install pdm
+	@which pdm || brew install pdm
+	@which pandoc || brew install pandoc
+	@which pdflatex || brew install --cask mactex
 
 
 # PROJECT DEPENDENCIES #########################################################
@@ -37,7 +39,16 @@ data:
 
 ## Run main script
 reports:
-	@pdm run fastapi dev ./${PACKAGE}/main.py
+	@for file in ./reports/*.md; do \
+		pandoc \
+		"$$file" \
+		--bibliography=./reports/new-energy-hackathon-2025.bib \
+		--citeproc \
+		--csl=./reports/ieee.csl \
+		--listings \
+  		--output="$${file%.md}.pdf" \
+		--resource-path=./reports/figures; \
+	done
 
 
 # TEST #########################################################################
