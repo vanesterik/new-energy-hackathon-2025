@@ -1,0 +1,27 @@
+[project]
+name = "new-energy-hackathon-2025"
+version = "0.1.0"
+description = "Repository to manage all research, artifacts, and solutions developed by our team during the New Energy Hackathon 2025. This includes project documentation, code, prototypes, and insights related to our participation in the hackathon."
+authors = [
+    { name = "Jos Aalberts", email = "jos.aalberts@tennet.nl" },
+    { name = "Koen van Esterik", email = "kd.vanesterik@student.han.nl" },
+    { name = "Steven Bontius", email = "s.bontius@gasunie.nl" },
+]
+dependencies = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.1",
+    "numpy>=2.2.5",
+    "pandas>=2.2.3",
+    "scikit-learn>=1.6.1",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
